@@ -1,0 +1,1 @@
+export const baseUrl = 'http://osos.test/'
