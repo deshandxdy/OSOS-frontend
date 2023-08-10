@@ -21,18 +21,14 @@ export class TokenService {
   isValidToken() {
     const token = this.getToken();
     if (token) {
-      const payload = this.payload(token);
-      if (payload) {
-        return Object.values(this.issuer).indexOf(payload.iss) > -1
-          ? true
-          : false;
-      }
+      return true
     } else {
       return false;
     }
   }
   payload(token: any) {
     const jwtPayload = token.split('.')[1];
+    console.log(atob(jwtPayload))
     return JSON.parse(atob(jwtPayload));
   }
   // User state based on valid token
