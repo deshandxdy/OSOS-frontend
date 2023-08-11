@@ -12,6 +12,8 @@ import { AuthInterceptor } from './shared/auth.interceptor';
 import { HeaderComponent } from './components/layout/header/header.component';
 import { BookComponent } from './components/Home/book/book.component';
 import { NewBookComponent } from './components/Home/new-book/new-book.component';
+import { ListBooksComponent } from './components/BookManagement/list-books/list-books.component';
+import { EditBookComponent } from './components/BookManagement/edit-book/edit-book.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,9 @@ import { NewBookComponent } from './components/Home/new-book/new-book.component'
     SignupComponent,
     HeaderComponent,
     BookComponent,
-    NewBookComponent
+    NewBookComponent,
+    ListBooksComponent,
+    EditBookComponent,
   ],
   imports: [
     BrowserModule,

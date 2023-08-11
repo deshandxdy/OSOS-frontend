@@ -12,6 +12,7 @@ export class TokenService {
     localStorage.setItem('auth_token', data.token);
     localStorage.setItem('role', data.role);
     localStorage.setItem('user_id', data.user.id);
+    localStorage.setItem('author_id', data.author.id);
   }
 
   getToken() {
@@ -26,6 +27,11 @@ export class TokenService {
   getUserId()
   {
     return localStorage.getItem('user_id') ?? '';
+  }
+
+  getAuthorId(): number
+  {
+    return Number(localStorage.getItem('author_id')) ?? 0;
   }
 
   // Verify the token
