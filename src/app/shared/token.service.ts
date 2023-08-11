@@ -6,17 +6,28 @@ import { baseUrl } from '../constants';
 })
 export class TokenService {
 
-  private issuer = {
-    login: baseUrl+'api/login',
-    register: baseUrl+'api/register',
-  };
-  constructor() {}
-  handleData(token: any) {
-    localStorage.setItem('auth_token', token);
+  constructor() { }
+
+  handleData(data: any) {
+    localStorage.setItem('auth_token', data.token);
+    localStorage.setItem('role', data.role);
+    localStorage.setItem('user_id', data.user.id);
   }
+
   getToken() {
     return localStorage.getItem('auth_token');
   }
+
+  getRole(): string
+  {
+    return localStorage.getItem('role') ?? '';
+  }
+
+  getUserId()
+  {
+    return localStorage.getItem('user_id') ?? '';
+  }
+
   // Verify the token
   isValidToken() {
     const token = this.getToken();
@@ -26,17 +37,24 @@ export class TokenService {
       return false;
     }
   }
+
   payload(token: any) {
     const jwtPayload = token.split('.')[1];
-    console.log(atob(jwtPayload))
     return JSON.parse(atob(jwtPayload));
   }
+
   // User state based on valid token
   isLoggedIn() {
     return this.isValidToken();
   }
+
   // Remove token
   removeToken() {
     localStorage.removeItem('auth_token');
+  }
+
+  //remove role
+  removeRole() {
+    localStorage.removeItem('role');
   }
 }

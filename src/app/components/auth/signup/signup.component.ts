@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth.service';
+import { TokenService } from 'src/app/shared/token.service';
 
 @Component({
   selector: 'app-signup',
@@ -16,6 +17,7 @@ export class SignupComponent {
   constructor(
     public router: Router,
     public fb: FormBuilder,
+    public token : TokenService,
     public authService: AuthService
   ) {
     this.registerForm = this.fb.group({
@@ -26,7 +28,11 @@ export class SignupComponent {
       password_confirmation: [''],
     });
   }
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.token.isLoggedIn()) {
+      this.router.navigate([''])
+    }
+  }
   onSubmit() {
     this.loading = true
     this.authService.register(this.registerForm.value).subscribe(

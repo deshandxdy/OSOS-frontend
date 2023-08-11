@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TokenService } from '../shared/token.service';
 
 @Component({
   selector: 'app-home',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  role!: string
 
+  constructor(
+    public token: TokenService,
+  ) {
+      this.role = this.token.getRole()
+  }
 }

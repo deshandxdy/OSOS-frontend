@@ -10,7 +10,7 @@ import { TokenService } from 'src/app/shared/token.service';
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.css']
 })
-export class SigninComponent  implements OnInit {
+export class SigninComponent implements OnInit {
   loginForm: FormGroup;
   errors: any = null;
 
@@ -49,6 +49,6 @@ export class SigninComponent  implements OnInit {
 
   // Handle response
   responseHandler(data: any) {
-    this.token.handleData(data.token);
+    this.token.handleData(data);
   }
 }

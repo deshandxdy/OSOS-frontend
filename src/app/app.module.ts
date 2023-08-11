@@ -9,12 +9,18 @@ import { SignupComponent } from './components/auth/signup/signup.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AuthInterceptor } from './shared/auth.interceptor';
+import { HeaderComponent } from './components/layout/header/header.component';
+import { BookComponent } from './components/Home/book/book.component';
+import { NewBookComponent } from './components/Home/new-book/new-book.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    HeaderComponent,
+    BookComponent,
+    NewBookComponent
   ],
   imports: [
     BrowserModule,

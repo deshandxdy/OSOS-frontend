@@ -16,10 +16,12 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.isSignedIn = this.token.isLoggedIn()!
+    this.isSignedIn = this.token.isLoggedIn()
 
-    if (!this.isSignedIn) {
-      //this.router.navigate(['sign-in'])
-    }
+    /* if (!this.isSignedIn) {
+      this.router.navigate(['sign-in'])
+    } else {
+      this.router.navigate([''])
+    } */
   }
 }
