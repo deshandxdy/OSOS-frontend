@@ -6,14 +6,25 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { SigninComponent } from './components/auth/signin/signin.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AuthInterceptor } from './shared/auth.interceptor';
+import { HeaderComponent } from './components/layout/header/header.component';
+import { BookComponent } from './components/Home/book/book.component';
+import { NewBookComponent } from './components/Home/new-book/new-book.component';
+import { ListBooksComponent } from './components/BookManagement/list-books/list-books.component';
+import { EditBookComponent } from './components/BookManagement/edit-book/edit-book.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    HeaderComponent,
+    BookComponent,
+    NewBookComponent,
+    ListBooksComponent,
+    EditBookComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,7 +33,13 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

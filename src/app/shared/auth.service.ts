@@ -15,16 +15,19 @@ export class User {
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
+
   // User registration
   register(user: User): Observable<any> {
     return this.http.post(baseUrl+'api/register', user);
   }
+
   // Login
   signin(user: User): Observable<any> {
     return this.http.post<any>(baseUrl+'api/login', user);
   }
-  // Access user profile
+
+  // user Logout
   logout(user: User): Observable<any> {
     return this.http.post(baseUrl+'api/logout', user);
   }
