@@ -14,6 +14,7 @@ import { BookComponent } from './components/Home/book/book.component';
 import { NewBookComponent } from './components/Home/new-book/new-book.component';
 import { ListBooksComponent } from './components/BookManagement/list-books/list-books.component';
 import { EditBookComponent } from './components/BookManagement/edit-book/edit-book.component';
+import { AuthorManagementComponent } from './components/author-management/author-management.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import { EditBookComponent } from './components/BookManagement/edit-book/edit-bo
     NewBookComponent,
     ListBooksComponent,
     EditBookComponent,
+    AuthorManagementComponent,
   ],
   imports: [
     BrowserModule,

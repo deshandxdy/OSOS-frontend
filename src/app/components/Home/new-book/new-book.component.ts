@@ -52,7 +52,9 @@ export class NewBookComponent {
       },
       (error) => {
         this.errors = error.error.errors;
-        console.log(error.error.errors)
+        if (error.message) {
+          this.alert.error(error.message)
+        }
         this.isLoading = false
       },
       () => {
