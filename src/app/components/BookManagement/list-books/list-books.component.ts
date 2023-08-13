@@ -4,6 +4,7 @@ import { initFlowbite } from 'flowbite';
 import { Modal } from 'flowbite';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AlertService } from 'src/app/shared/alert.service';
+import { TokenService } from 'src/app/shared/token.service';
 @Component({
   selector: 'app-list-books',
   templateUrl: './list-books.component.html',
@@ -17,11 +18,13 @@ export class ListBooksComponent implements OnInit {
   bookForm: FormGroup;
   errors: any = null
   cover_image!: string
+  role!: string
 
   constructor(
     private bookService: BookService,
     private fb: FormBuilder,
-    private alert: AlertService
+    private alert: AlertService,
+    private tokenService: TokenService
   ) {
     this.bookForm = this.fb.group({
       book_id: [''],
@@ -37,6 +40,7 @@ export class ListBooksComponent implements OnInit {
   ngOnInit(): void {
     this.initializeModal()
     this.getBooks()
+    this.role = this.tokenService.getRole()
   }
 
   getBooks = () => {
@@ -93,14 +97,13 @@ export class ListBooksComponent implements OnInit {
     formData.append('description', this.bookForm.controls['description'].value)
     formData.append('price', this.bookForm.controls['price'].value)
     formData.append('cover_image', this.bookForm.controls['cover_image'].value ?? null)
-    console.log(this.bookForm)
+
     this.bookService.updateABook(formData).subscribe(
       (result) => {
         console.log(result);
       },
       (error) => {
         this.errors = error.error.errors;
-        console.log(error.error.errors)
         this.isSaving = false
 
         if (error.message) {

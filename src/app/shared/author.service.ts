@@ -13,4 +13,8 @@ export class AuthorService {
   getAuthors(): Observable<any> {
     return this.http.get(baseUrl+'api/authors');
   }
+
+  changeStatus(formData: FormData): Observable<any> {
+    return this.http.post(baseUrl+'api/change-status', formData);
+  }
 }

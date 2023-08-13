@@ -23,7 +23,6 @@ export class BookService {
     query = query.trim();
     const options = query ?
       { params: new HttpParams().set('query', query) } : {};
-    console.log(options)
 
     return this.http.get(baseUrl+'api/books', options);
   }

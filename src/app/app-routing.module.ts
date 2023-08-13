@@ -10,16 +10,16 @@ import { AuthorManagementComponent } from './components/author-management/author
 const routes: Routes = [
   { path: 'sign-in', component: SigninComponent },
   { path: 'sign-up', component: SignupComponent },
-  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: '', component: HomeComponent},
   {
     path: 'manage-books', children: [
-      { path: 'all', component: ListBooksComponent, pathMatch: 'full' },
-      { path: 'new-book', component: NewBookComponent, pathMatch: 'full' },
+      { path: 'all', component: ListBooksComponent},
+      { path: 'new-book', component: NewBookComponent},
     ]
   },
   {
     path: 'manage-authors', children: [
-      { path: 'all', component: AuthorManagementComponent, pathMatch: 'full' },
+      { path: 'all', component: AuthorManagementComponent }
     ]
   },
 ];
