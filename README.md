@@ -1,7 +1,10 @@
 # OSOS - Book Store - Front End
 
 ## Set Up
-### package Install 
+### Clone project
+`git clone https://github.com/deshandxdy/OSOS-frontend.git`
+
+### packages Install (Tailwind css. Flowbite, etc. )
 `npm install`
 
 ### Set backend api URL
